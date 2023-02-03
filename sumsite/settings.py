@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+# https://oen-blog.tistory.com/46 CORS 문제 해결 방법 참조
 
 from pathlib import Path
 
@@ -26,8 +27,7 @@ SECRET_KEY = "django-insecure-fovjnq8smsf_j*ykgjl@!&j%rgb36!+9fqhs^(x3v%778!vx$5
 DEBUG = True
 
 # AWS 접속 IP
-ALLOWED_HOSTS = [' ec2-52-79-243-132.ap-northeast-2.compute.amazonaws.com','52.79.243.132','0.0.0.0']
-
+ALLOWED_HOSTS = ['52.79.243.132','127.0.0.1','43.200.179.186']
 
 # Application definition
 
@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "website"
+    "website",
+    "corsheaders" # corsheaders를 추가
 ]
 
+# middleware class도 추가
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -50,6 +53,35 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+#################################################################################
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+###############################################################################
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ROOT_URLCONF = "sumsite.urls"
 
@@ -101,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 

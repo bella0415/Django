@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+    <body>
+        <div>
+            <button onclick="get_data()">가져오기</button>
+
+            <script>
+                function get_data(){
+                var request = new XMLHttpRequest();
+                // request.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+               // request.setRequestHeader('Access-Control-Allow-Origin','*');
+                request.open('GET', 'http://43.200.179.186');
+                request.send();
+                request.onload = function() {
+                    console.log(JSON.parse(request.response));
+                }
+            }
+            </script>
+        </div>
+
+    </body>
+</html>

@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls), # admin page
-    # path("",include("website.urls")) # website 밑에 있는 urls.py도 main에서 사용 가능하게 함
+    path("",include("website.urls")) # website 밑에 있는 urls.py도 main에서 사용 가능하게 함
 ]
