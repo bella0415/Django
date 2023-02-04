@@ -1,9 +1,43 @@
 <html>
     <head>
-        <title>I WANNA GER API!!</title>
+        <title>GER API!!</title>
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+       <!-- Bootstrap -->
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     </head>
     <body>
-        <button>GET API</botton>
-        <a>{{text}}</a>
+        <style>
+            h1, h2, h3, h4, h5, h6, p, a, button, input, label {
+                font-family: 'Gaegu' !important;
+                }
+            </style>
+        <div>
+            <!-- Date -->
+            <p> <label for="start">시작 날짜 :</label> <input type="date" id="start" name="trip-start" value="today"min="2015-01-01" max="2022-8-31"></p>
+            <p>  <label for="end"> 마지막 날짜 :</label> <input type="date" id="end" name="trip-start" value="today"min="2015-01-01" max="2022-8-31"></p>
+            <p><button onclick="get_msg()" class="btn btn-outline-secondary">미세먼지 농도</button></p>
+            <p id="text"></p> <!-- id = 결과를 반환할 위치 -->
+        </div>
+        <div>
+            <script>
+                function get_msg() {
+            
+                    var request = new XMLHttpRequest(); // 객체 생성
+                    request.open('GET', 'http://43.200.179.186/'); // 해당 주소에서 GET
+                    request.send(); // 보내줌,,
+                    request.onload = function() { 
+                        var response = request.response;
+                        // alert("API 출동");
+                        document.getElementById("text").innerHTML = response; 
+                        // document.getElementBy{" "} = id,class 사용 가능
+                }
+            } 
+            </script>
+
+        </div>
     </body>
 </html>
