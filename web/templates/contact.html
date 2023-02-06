@@ -8,16 +8,15 @@
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
     </head>
 
     <!-- CSS -->
     <style>
         /* Font Style */
-        h1, h2, h3, h4, h5, h6, p, a, button, input, label {font-family: 'Gaegu' !important; font-size : 15pt}
+        h1, h2, h3, h4, h5, h6, p, a, button, input, label, textarea {font-family: 'Gaegu' !important; font-size : 15pt}
 
-        nav{font-size: 20pt; position: relative; margin-bottom : 100px}
-        nav ul{padding: 0; margin: 0 auto; width: auto;}
+        nav{font-size: 20pt; position: relative; margin-bottom : 100px;}
+        nav ul{padding: 0; margin: 0 auto ; width: auto;}
         nav li{}
         nav a{line-height: 50px; height: 50px;}
         nav li a{box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;}
@@ -29,14 +28,15 @@
           li{/*position: relative;*/display: inline-block;}
           li a{color: #FFFFFF; text-align: right; padding: 14.5px 16px; text-decoration: none;}
           li a:hover{/*color: #FFFFFF;*/ color: #FFFFFF; font-weight:normal;}
-          
+          div#mb{padding-top: 100px;}
           .menu {width: 5000px; height: 50px; text-align: center; max-width: 100%; background-position: center; background-size: cover; background-color: #333333;color: white; position: absolute;z-index: 1;}
         </style> 
 
     <!-- Background color 지정-->
     <body style="background-color: #FFC1CC;"> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-        <!-- 상단바 설정 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        
+		<!-- 상단바 설정 -->
         <div class="menu" >
             <nav class="clearfix">
               <ul class="clearfix">
@@ -46,33 +46,36 @@
                 <li><a href = {%url 'get_contact'%}>Contact</a></li>
             </ul>
             <a id="pull" href="#"></a>
-          </nav>
+          	</nav>
           </div>
+		  
+		  <!-- email 보내기-->
+		  <script> 
+			function sendEmail() {
+				var title = document.getElementById("exampleFormControlInput1").value
+				var description = document.getElementById("exampleFormControlTextarea1").value
+				var mail_to = "mailto:yiseuljeong0415@gmail.com?subject=", + title + '&body=' + description;
+				window.open(mail_to);
+			}
+		  </script>
+		  <div class = "container", id = "mb">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">Title</label>
+				<input class="form-control" id="exampleFormControlInput1" placeholder="Input title">
+			  </div>
+	
+			  <div class="mb-3">
+				<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Input Something..."></textarea>
+			  </div>
+			  <div class = "d-grid gap-2">
+			  <button  class="btn btn-outline-secondary" type = "button", onclick = "sendEmail()">Send</button>
+			  </div>
+	
+		  </div>
+		
 
-        <!-- API 가져올 버튼  -->
-        <div style="text-align:center; padding: 150px;">
-            <!-- Date -->
-            <p>미세먼지 농도를 알려줘!</p>
-            <p> <label for="start">시작 날짜 :</label> <input type="date" id="start" name="trip-start" value="today"min="2015-01-01" max="2022-8-31"></p>
-            <p> <label for="end"> 마지막 날짜 :</label> <input type="date" id="end" name="trip-start" value="today"min="2015-01-01" max="2022-8-31"></p>
-            <p><button onclick="get_msg()" class="btn btn-outline-secondary">미세먼지 농도</button></p>
-            <p id="text"></p> <!-- id = 결과를 반환할 위치 -->
-        
-        <!-- API 가져올 script-->
-        <script>
-                function get_msg() {
-                    var request = new XMLHttpRequest(); // 객체 생성
-                    request.open('GET', 'http://43.200.179.186/'); // 해당 주소에서 GET
-                    request.send();
-                    request.onload = function() { 
-                        var response = request.response;
-                        // alert("API 출동");
-                        document.getElementById("text").innerHTML = response; 
-                        // document.getElementBy{" "} = id,class 사용 가능
-                }
-            } 
-        </script>
   
-        </div>
+        
     </body>
 </html>
