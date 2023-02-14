@@ -5,10 +5,13 @@ urlpatterns = [
      path("", 
         views.get_api, 
         name='get_api'),
-     path("code", 
-         views.get_code, 
-         name = "get_code"),
-     path("contact", # pk라는 int 형 변수 가 들어 감
+     path("deeplearning", 
+         views.get_deeplearning_code, 
+         name = "get_deeplearning_code"),
+      path("machinelearning", 
+         views.get_machinelearning_code, 
+         name = "get_machinelearning_code"),
+     path("contact",
          views.get_contact, 
          name = "get_contact"),
    

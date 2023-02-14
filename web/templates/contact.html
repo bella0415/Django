@@ -17,7 +17,7 @@
         /* Font Style */
         h1, h2, h3, h4, h5, h6, p, a, button, input, label, textarea {font-family: 'Poor Story' !important; font-size : 14pt}
 
-        nav{font-size: 15pt; position: relative; margin-bottom : 100px;}
+        nav {font-size: 15pt; position: relative; margin-bottom : 100px;}
         nav ul{position: fixed; top: 0; /* width: 100% */ left: 0; right: 0;padding: 0; margin: 0 auto ; width: auto;}
         nav li{padding : 5;}
         nav a{line-height: 50px; height: 50px;}
@@ -27,7 +27,7 @@
         nav a#pull{display: none}
         h2#our {padding-top : 30px;}
           html {-webkit-touch-callout:none; -webkit-user-select:none; -webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
-          ul{/*list-style-type: none; */margin: 0; padding: 0; background-color: #333; text-align: center;}
+          ul {/*list-style-type: none; */margin: 0; padding: 0; background-color: #333; text-align: center;}
           li{/*position: relative;*/display: inline-block;}
           li a{color: #FFFFFF; text-align: right; padding: 14.5px 16px; text-decoration: none;}
           li a:hover{/*color: #FFFFFF;*/ color: #FFFFFF; font-weight:normal;}
@@ -70,16 +70,17 @@
         
 		<!-- 상단바 설정 -->
         <div class="menu" >
-            <nav class="clearfix">
-              <ul class="clearfix">
-                <li><a href={%url 'get_api'%}>Home</a></li> 
-                <li><a href = {%url 'get_code'%}>Codes</a></li>
-                <li><a>Report</a></li>
-                <li><a href = {%url 'get_contact'%}>Appendix</a></li>
-            </ul>
-            <a id="pull" href="#"></a>
-          	</nav>
-          </div>
+          <nav class="clearfix">
+            <ul class="clearfix">
+              <li ><a href={%url 'get_api'%}>Home</a></li> 
+              <li ><a href = {%url 'get_deeplearning_code'%}>Deep Learning</a></li>
+              <li ><a href = {%url 'get_machinelearning_code'%} >Machine Learning</a></li>
+              <li ><a>Report</a></li>
+              <li ><a href = {%url 'get_contact'%}>Appendix</a></li>
+          </ul>
+          <a id="pull" href="#"></a>
+        </nav>
+        </div>
 
         <!-- About us -->
           <h2 id = "our"style="text-align:center"><br></h2>
