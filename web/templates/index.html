@@ -48,7 +48,7 @@
                 <li><a href={%url 'get_api'%}>Home</a></li> 
                 <li><a href = {%url 'get_deeplearning_code'%}>Deep Learning</a></li>
                 <li><a href = {%url 'get_machinelearning_code'%} >Machine Learning</a></li>
-                <li><a>Report</a></li>
+                <li><a href = {%url 'show_report'%} >Visualization</a></li>
                 <li><a href = {%url 'get_contact'%}>Appendix</a></li>
             </ul>
             <a id="pull" href="#"></a>
@@ -59,26 +59,13 @@
         <div style="text-align:center; padding: 250px;">
             <!-- Date -->
             <p>내일 서울시 미세먼지 농도를 알려줘!</p>
-            <p> <label for="start">Select Time :</label> <input type="time" id="start" ></p>
             <p> <button onclick="get_msg()" class="btn btn-outline-secondary" style = "background:#333; color:#FFFFFF;">미세먼지 농도</button> </p>
             <p id="text"></p> <!-- id = 결과를 반환할 위치 -->
         
         <!-- API 가져올 script-->
         <script>
                 function get_msg() {
-                    const timeinput = document.getElementById("start");
-                    console.log(timeinput.value);
-                    if (timeinput.value == 0){
-                        Swal.fire(
-                            'Error!',
-                            '시간을 입력해주세요',
-                            'error'
-                          );
 
-                        return ;
-                    }
-                        
-                    
                     var request = new XMLHttpRequest(); // 객체 생성
                     request.open('GET', 'http://43.200.179.186/'); // 해당 주소에서 GET
                     request.send();

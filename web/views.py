@@ -18,6 +18,9 @@ def get_deeplearning_code(request) :
 def get_machinelearning_code(request) :
     return render(request, 'machine_learning_code.html')
 
+# 리포트 페이지
+def show_report(request) :
+    return render(request, 'report.html')
 
 # contact 페이지      
 def get_contact(request) :
